@@ -11,9 +11,9 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Application Date</th>
+                <th>Approved Date</th>
                 <th>Start Date</th>
                 <th>End Date</th>
-                <th>Approved Date</th>
                 <th>Days</th>
 
             </tr>
@@ -34,13 +34,12 @@
                     {
                         <tr>
                             <td>@index</td>
-                            <td>@emp.Firstname @emp.Lastname</td>
+                            <td>@emp.Fullname</td>
                             <td>@leave.Created.ToShortDateString()</td>
+                            <td>@leave.HandledDate.ToShortDateString()</td>
                             <td>@leave.StartDate.ToShortDateString()</td>
                             <td>@leave.EndDate.ToShortDateString()</td>
-                            <td>@leave.HandledDate.ToShortDateString()</td>
                             <td>@Math.Ceiling((leave.EndDate - leave.StartDate).TotalDays)</td>
-
                         </tr>
                         totalDays += (int)Math.Ceiling((leave.EndDate - leave.StartDate).TotalDays);
                         index++;

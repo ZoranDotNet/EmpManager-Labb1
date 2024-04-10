@@ -17,7 +17,6 @@ namespace EmpManager.Controllers
         }
         public IActionResult Index()
         {
-
             return View();
         }
 
@@ -50,7 +49,6 @@ namespace EmpManager.Controllers
                 return View("SearchResultFromNameSearch", employee);
             }
 
-
             TempData["error"] = "Something went wrong";
             return View();
         }
@@ -60,6 +58,8 @@ namespace EmpManager.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         public async Task<IActionResult> SearchByDate(DateTime searchDate)
         {
@@ -70,12 +70,12 @@ namespace EmpManager.Controllers
                 //only get employees who has Leave created in searchDate
                 List<Employee> employee = await _context.Employees
                     .Where(e => e.LeaveHistory.Any(l => l.Created.Month == userinput))
-                    .Include(e => e.LeaveHistory).ToListAsync();
+                    .Include(e => e.LeaveHistory.Where(l => l.Created.Month == userinput)).ToListAsync();
 
-                if (employee == null)
+                if (employee.Count == 0)
                 {
                     TempData["error"] = "No employee found in search";
-                    return NotFound();
+                    return View();
                 }
                 var model = new SearchResultVM()
                 {

@@ -166,8 +166,13 @@ namespace EmpManager.Controllers
 
         public async Task<IActionResult> ViewApplication()
         {
-            var appDbContext = await _context.Leaves.Include(l => l.Employee).ToListAsync();
-            return View(appDbContext);
+            var leaves = await _context.Leaves.Include(l => l.Employee).ToListAsync();
+            if (leaves.Count == 0)
+            {
+                TempData["error"] = "No Data was found";
+                return View();
+            }
+            return View(leaves);
         }
 
         public async Task<IActionResult> Approve(int id)
