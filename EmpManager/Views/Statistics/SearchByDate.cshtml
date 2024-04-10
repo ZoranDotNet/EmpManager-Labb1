@@ -1,0 +1,19 @@
+﻿
+
+<div class="container w-50">
+    <form method="post" asp-controller="Statistics" asp-action="SearchByDate">
+        <div class="w-50 p-3 mx-auto">
+            <h2>Search - Applications History</h2>
+
+            <div class="mb-3 mt-2">
+                <label >Enter Month</label><br />
+                <input type="date" name="searchDate" required class="w-100 p-1" />
+            </div>
+          
+            <div class="mt-3 pb-4">
+                <button class="btn btn-primary rounded-3" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+

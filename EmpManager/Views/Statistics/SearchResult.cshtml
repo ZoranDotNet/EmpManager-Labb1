@@ -1,0 +1,64 @@
+﻿@model EmpManager.ViewModels.SearchResultVM
+
+
+<div class="container mt-5">
+    <div>
+        <h2>Statistics for @Model.SearchDate.ToString("MMMM")</h2>
+    </div>
+    <table class="table table-bordered mt-4">
+        <thead class=" table-primary">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Application Date</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Approved Date</th>
+                <th>Days</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int index = 1;
+                int totalDays = 0;
+            }
+
+            @foreach (var emp in Model.Employees)
+            {
+
+                @foreach (var leave in emp.LeaveHistory)
+                {
+
+                    @if (leave.IsApproved)
+                    {
+                        <tr>
+                            <td>@index</td>
+                            <td>@emp.Firstname @emp.Lastname</td>
+                            <td>@leave.Created.ToShortDateString()</td>
+                            <td>@leave.StartDate.ToShortDateString()</td>
+                            <td>@leave.EndDate.ToShortDateString()</td>
+                            <td>@leave.HandledDate.ToShortDateString()</td>
+                            <td>@Math.Ceiling((leave.EndDate - leave.StartDate).TotalDays)</td>
+
+                        </tr>
+                        totalDays += (int)Math.Ceiling((leave.EndDate - leave.StartDate).TotalDays);
+                        index++;
+                    }
+                }
+                @if (emp.LeaveHistory.Any(l => l.IsApproved))
+                {
+                    <tr class="table-info">
+                        <td colspan="6"><strong>Total days:</strong></td>
+                        <td><strong>@totalDays</strong></td>
+                    </tr>
+                    totalDays = 0;
+                }
+            }
+        </tbody>
+    </table>
+    <div class="btn-group mt-3" role="group">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary rounded-3 mx-2"><i class="bi bi-house"></i> Home</a>
+        <a asp-controller="Statistics" asp-action="Index" class="btn btn-secondary rounded-3 mx-2"><i class="bi bi-search"></i> New Search</a>
+    </div>
+</div>

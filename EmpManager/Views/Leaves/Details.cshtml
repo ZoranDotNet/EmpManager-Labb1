@@ -1,0 +1,54 @@
+﻿@model EmpManager.Models.Leave
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h1>Details</h1>
+
+    <div>
+        <h4>Leave</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Employee)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Employee.Fullname)
+            </dd>
+        </dl>
+    </div>
+    <div class="mt-2">
+
+        <a class="btn btn-success me-2" asp-controller="Leaves" asp-action="Approve" asp-route-Id="@Model.Id"><i class="bi bi-hand-thumbs-up"></i> Approve</a>
+        <a class="btn btn-danger me-2" asp-controller="Leaves" asp-action="Deny" asp-route-Id="@Model.Id"><i class="bi bi-hand-thumbs-down"></i> Deny</a>
+        <a class="btn btn-primary me-2" asp-controller="Leaves" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+        <a class="btn btn-secondary" asp-controller="Leaves" asp-action="ViewApplication">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model EmpManager.Models.Leave
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container">
+    <div class="w-50 shadow mx-auto">
+        <form asp-action="Create" class="bg-dark text-light rounded">
+            <div class="p-4 mt-4">
+                <div class="pb-2">
+                    <h2 class="text-center text-light">Create Leave</h2>
+                    <hr />
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-3">
+                    <label asp-for="Type" class="control-label"></label>
+                    <select asp-for="Type" required class="form-control" asp-items="Html.GetEnumSelectList<LeaveType>()">
+                        <option hidden>Select your reason</option>
+                    </select>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control"/>
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="FkEmployeeId" class="control-label">Employee</label>
+                    <select asp-for="FkEmployeeId" class="form-control" asp-items="ViewBag.FkEmployeeId"></select>
+                </div>
+                <div class=" form-group d-flex justify-content-center align-items-center pb-2">
+                    <button type="submit" class="btn btn-primary me-2 rounded-2 form-control">Create</button>
+                    <a asp-action="Index" class="btn btn-secondary rounded-2 ms-2 form-control">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

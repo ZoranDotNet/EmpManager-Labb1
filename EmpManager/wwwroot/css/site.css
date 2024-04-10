@@ -1,0 +1,73 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.wrapper-home {
+    /*height: calc(100vh - 116px);*/
+    overflow: hidden;
+    background-color: #000000;
+    position: relative;
+    min-height: 300px;
+    padding: 30px 20vw;
+}
+
+
+
+.left-wrapper {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: hsl(283, 100%, 50%);
+}
+
+
+.right-wrapper {
+    display: grid;
+    place-items: center;
+}
+
+.right-wrapper h3 {
+    font-size: 3rem;
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+}
+
+.wave {
+    aspect-ratio: 2000/250;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer {
+    background-image: url(/images/wave.svg)
+}
+
+.landing-heading {
+    font-size: calc(5rem + 2vw);
+}
+
+.lines {
+    text-decoration: underline hsl(283, 100%, 50%);
+}
+

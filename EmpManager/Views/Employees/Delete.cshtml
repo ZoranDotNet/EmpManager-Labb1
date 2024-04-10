@@ -1,0 +1,39 @@
+﻿@model EmpManager.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container">
+    <div class="w-50 shadow mx-auto">
+        <form method="post" class="bg-dark text-light rounded">
+            <div class="p-4 mt-4">
+                <div class="row pb-2">
+                    <h2 class="text-center text-light">Delete Employee</h2>
+                    <hr />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Firstname">Firstname</label>
+                    <input asp-for="Firstname" type="text" readonly class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Lastname">Lastname</label>
+                    <input asp-for="Lastname" type="text" readonly class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" readonly class="form-control" />
+                </div>
+                <div class="mb-5">
+                    <label asp-for="Phonenumber">Phonenumber</label>
+                    <input asp-for="Phonenumber" type="text" readonly class="form-control" />
+                </div>
+                <div class="d-flex justify-content-center align-items-center pb-2">
+
+                    <button type="submit" class="btn btn-danger me-2 rounded-2 form-control">Delete</button>
+
+                    <a class="btn btn-secondary rounded-2 ms-2 form-control" asp-controller="Employees" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

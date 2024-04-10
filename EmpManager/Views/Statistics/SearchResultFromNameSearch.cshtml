@@ -1,0 +1,59 @@
+﻿@model EmpManager.Models.Employee
+
+<div class="container pb-4">
+    <div class="row py-4">
+        <div class="col-6">
+            <h2>Employee history</h2>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Applcation Date</th>
+                <th>Reason</th>
+                <th>Approved</th>
+                <th>Handled</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.LeaveHistory.Count != 0 || Model.LeaveHistory == null)
+            {
+                var index = 1;
+                @foreach (var leave in Model.LeaveHistory.OrderBy(x => x.Created))
+                {
+                    <tr>
+                        <td>@index</td>
+                        <td>@Model.Fullname</td>
+                        <td>@leave.Created.ToShortDateString()</td>
+                        <td>@leave.Type</td>
+                        @if (leave.IsApproved)
+                        {
+                            <td>✅ </td>
+                        }
+                        else
+                        {
+                            <td>❌</td>
+                        }
+
+                        @if (leave.Handled)
+                        {
+                            <td>@leave.HandledDate.ToShortDateString()</td>
+                        }
+                        else
+                        {
+                            <td>Not handled yet </td>
+                        }
+                    </tr>
+                    index++;
+                }
+            }
+        </tbody>
+    </table>
+    <div class="btn-group mt-3" role="group">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary rounded-3 mx-2"><i class="bi bi-house"></i> Home</a>
+        <a asp-controller="Statistics" asp-action="Index" class="btn btn-secondary rounded-3 mx-2"><i class="bi bi-search"></i> New Search</a>
+    </div>
+</div>
+
