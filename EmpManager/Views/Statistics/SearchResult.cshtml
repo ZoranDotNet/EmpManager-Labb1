@@ -45,7 +45,7 @@
                         index++;
                     }
                 }
-                @if (emp.LeaveHistory.Any(l => l.IsApproved))
+                @if (emp.LeaveHistory.Any(l => l.IsApproved))  // or if(totalDays > 0) works also
                 {
                     <tr class="table-info">
                         <td colspan="6" class="text-end"><strong>Total days:</strong></td>
@@ -53,6 +53,8 @@
                     </tr>
                     totalDays = 0;
                 }
+
+
             }
         </tbody>
     </table>

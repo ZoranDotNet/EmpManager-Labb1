@@ -45,10 +45,16 @@
         </dl>
     </div>
     <div class="mt-2">
+        @if (!Model.Handled)
+        {
+            <a class="btn btn-success me-2" asp-controller="Leaves" asp-action="Approve" asp-route-Id="@Model.Id"><i class="bi bi-hand-thumbs-up"></i> Approve</a>
+            <a class="btn btn-danger me-2" asp-controller="Leaves" asp-action="Deny" asp-route-Id="@Model.Id"><i class="bi bi-hand-thumbs-down"></i> Deny</a>
+            <a class="btn btn-primary me-2" asp-controller="Leaves" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+            <a class="btn btn-secondary" asp-controller="Leaves" asp-action="ViewApplication">Back to List</a>
+        }else
+        {
+            <a class="btn btn-secondary" asp-controller="Leaves" asp-action="Index">Back to List</a>
+        }
 
-        <a class="btn btn-success me-2" asp-controller="Leaves" asp-action="Approve" asp-route-Id="@Model.Id"><i class="bi bi-hand-thumbs-up"></i> Approve</a>
-        <a class="btn btn-danger me-2" asp-controller="Leaves" asp-action="Deny" asp-route-Id="@Model.Id"><i class="bi bi-hand-thumbs-down"></i> Deny</a>
-        <a class="btn btn-primary me-2" asp-controller="Leaves" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
-        <a class="btn btn-secondary" asp-controller="Leaves" asp-action="ViewApplication">Back to List</a>
     </div>
 </div>

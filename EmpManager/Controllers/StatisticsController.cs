@@ -29,7 +29,7 @@ namespace EmpManager.Controllers
         [HttpPost]
         public async Task<IActionResult> SearchByName(int id)
         {
-            if (ModelState.IsValid)
+            if (id != 0)
             {
                 var employee = await _context.Employees
                .Include(e => e.LeaveHistory)

@@ -1,13 +1,16 @@
-﻿@model EmpManager.ViewModels.SearchVM
+﻿
 
+@{
+    ViewData["Title"] = "Search by name";
+}
 
 <div class="container">
     <form asp-action="SearchByName" asp-controller="Statistics" method="post">
         <div class="w-50 p-3 mx-auto">
             <h2>Search for Employee</h2>
             <div class="form-group mb-3">
-                <label asp-for="FkEmployeeId" class="control-label">Employee</label>
-                <select asp-for="FkEmployeeId" class="form-control" name="id" asp-items="ViewBag.FkEmployeeId"></select>
+                <label  class="control-label">Employee</label>
+                <select  class="form-control" name="id" asp-items="ViewBag.FkEmployeeId"></select>
             </div>
 
             <button class="btn btn-primary rounded-3" type="submit">Search</button>
